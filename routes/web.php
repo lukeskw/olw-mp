@@ -24,6 +24,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/checkout', \App\Livewire\Checkout::class)->name('checkout');
 
+Route::get('/pedido-criado/{order_id}', \App\Livewire\Result::class)
+    ->middleware(['signed'])
+    ->name('checkout.result');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

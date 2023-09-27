@@ -1,10 +1,7 @@
-import './bootstrap';
-import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm.js'
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+import checkout from "./checkout/checkout.js";
+import Clipboard from "@ryangjchandler/alpine-clipboard";
 
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
-
+Alpine.plugin(Clipboard);
+Alpine.data('checkout', checkout);
 Livewire.start();

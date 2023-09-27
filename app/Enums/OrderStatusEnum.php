@@ -21,7 +21,7 @@ enum OrderStatusEnum: int {
         };
     }
 
-    public function getStyle(): string {
+    public function getStyles(): string {
         return match($this) {
             self::CART => 'px-2 py-0.5 text-xs rounded-full bg-gray-100 text-gray-800',
             self::PENDING => 'px-2 py-0.5 text-xs rounded-full bg-yellow-100 text-yellow-800',
@@ -31,4 +31,21 @@ enum OrderStatusEnum: int {
             default => 'Status não encontrado'
         };
     }
+
+    public static function parse($status){
+        switch ($status){
+            case 'pending':
+                return self::PENDING;
+            case 'approved':
+                return self::PAID;
+            case 'rejected':
+                return self::REJECTED;
+            case 'canceled':
+                return self::CANCELED;
+            default:
+                return self::CANCELED;
+        }
+    }
 }
+
+
