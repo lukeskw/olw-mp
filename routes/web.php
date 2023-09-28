@@ -26,14 +26,13 @@ Route::get('/login', \App\Livewire\Login::class)
     ->middleware(['guest'])
     ->name('login');
 Route::get('/logout', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'destroy'])
-//    ->middleware(['signed'])
     ->name('logout');
 Route::get('login/{email}', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'login'])
     ->middleware(['signed'])
     ->name('login.store');
 
 
-Route::get('/checkout', \App\Livewire\Checkout::class)->name('checkout');
+Route::get('/checkout', \App\Livewire\Checkout::class)->middleware(['auth', 'verified'])->name('checkout');
 
 Route::get('/pedido-criado/{order_id}', \App\Livewire\Result::class)
     ->middleware(['signed'])

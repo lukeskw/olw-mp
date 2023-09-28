@@ -11,6 +11,7 @@
                 <div class="flex p-6 text-gray-900 gap-10">
                     {{ __("You're logged in!") }}
                     <a href="{{url('logout')}}" >Logout</a>
+                    <a href="{{url('checkout')}}" >Checkout</a>
                 </div>
             </div>
         </div>
